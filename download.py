@@ -26,7 +26,7 @@ def trim(basename, name, start, end):
     t = s2m(t)
     ss = s2m(ss)
 
-    ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -i ' + basename + '.mp4 ' + name
+    ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -strict -2 -i ' + basename + '.mp4 ' + name
     print(ff_code)
     subprocess.call(ff_code, shell=True)
 
