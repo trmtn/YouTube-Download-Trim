@@ -20,8 +20,8 @@ def s2m(s):
 
 def trim(basename, name, start, end):
 
-    t  = start
-    ss = end - start
+    ss  = start
+    t = end - start
 
     t = s2m(t)
     ss = s2m(ss)
