@@ -4,7 +4,6 @@ import sys
 import argparse
 import subprocess
 import glob
-import ffmpeg
 
 from IPython import embed
 from IPython.terminal.embed import InteractiveShellEmbed
@@ -26,9 +25,6 @@ def trim(basename, name, start, end):
 
     t = s2m(t)
     ss = s2m(ss)
-
-    stream = ffmpeg.input(basename+".mp4")
-    stream = ffmpeg.output(stream, name ,t=t, ss=ss)
 
     ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -i ' + basename + '.mp4 ' + name
     print(ff_code)
