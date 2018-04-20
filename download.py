@@ -3,7 +3,6 @@ import os
 import sys
 import argparse
 import subprocess
-import ffmpeg
 import glob
 
 from IPython import embed
