@@ -4,6 +4,7 @@ import sys
 import argparse
 import subprocess
 import glob
+import ffmpeg
 
 from IPython import embed
 from IPython.terminal.embed import InteractiveShellEmbed
