@@ -20,13 +20,13 @@ def s2m(s):
 
 def trim(basename, name, start, end):
 
-    ss  = start
-    t = end - start
+    t  = start
+    ss = end - start
 
     t = s2m(t)
     ss = s2m(ss)
 
-    ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -i ' + basename + '.mp4 ' + '-strict -2 ' + name
+    ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -strict -2 -i ' + basename + '.mp4 ' + name
     print(ff_code)
     subprocess.call(ff_code, shell=True)
 
@@ -86,3 +86,4 @@ if __name__ == '__main__':
             print('-------------------------------------------')
             print("/// downloaded:", dl_url)
             print("/// file_path:", dl_name)
+
