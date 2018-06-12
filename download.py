@@ -20,11 +20,11 @@ def s2m(s):
 
 def trim(basename, name, start, end):
 
-    t  = start
-    ss = end - start
+    ss = start
+    t = end -start
 
-    t = s2m(t)
     ss = s2m(ss)
+    t = s2m(t)
 
     ff_code = 'ffmpeg -ss ' + ss + ' -t ' + t + ' -strict -2 -i ' + basename + '.mp4 ' + name
     print(ff_code)
@@ -49,7 +49,14 @@ if __name__ == '__main__':
         dl_basename = os.path.join(args.output_all, "{0:04d}".format(int(row[0])))
         dl_trimname = os.path.join(args.output_trim, "{0:04d}".format(int(row[0])))
         dl_url = row[1]
-        times = [int(x.split(":")[0])*60+int(x.split(":")[1]) for x in row[4:] if x]
+        times = []
+        for x in row[4:]:
+            if x:
+                xs = [int(i) for i in x.split("_")]
+                xs = (3-len(xs)) * [0] + xs
+
+                time = 3600 * xs[0] + 60 * xs[1] + xs[2]
+                times.append(time)
 
         base_movies = glob.glob(args.output_all + "/*")
         if not (dl_basename+".mp4") in base_movies:
